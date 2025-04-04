@@ -8,7 +8,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain,create_history_aware_retriever
 from langchain_community.vectorstores import FAISS
-from langchain_chroma import Chroma
+#from langchain_chroma import Chroma
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_community.document_loaders import PyPDFLoader
@@ -42,11 +42,7 @@ os.environ["HF_TOKEN"]=os.getenv("HF_TOKEN")
 
 api_key=st.text_input("Enter your Groq API Key:",type="password")
 embeddings=HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-vector_store = Chroma(
-    collection_name="test_collection",
-    embedding_function=embeddings,
-    persist_directory="./chroma",  # Where to save data locally, remove if not necessary
-)
+vector_store= None
 if api_key:
     model = ChatGroq(model="Llama3-8b-8192",groq_api_key=groq_api_key)
 
@@ -70,7 +66,10 @@ if api_key:
         ## Splitting and creating embeddings for the documents
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
         splits = text_splitter.split_documents(documents)
-        vector_store.add_documents(splits)  
+        if vector_store is None:
+            vector_store = FAISS.from_documents(splits,embeddings)
+        else:
+            vector_store.add_documents(splits)  
         retriever = vector_store.as_retriever()
 
         ## Creating new prompt with context

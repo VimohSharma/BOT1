@@ -11,7 +11,7 @@ langchain-community
 langchain-groq
 langchain-huggingface
 langchain-text-splitters
-langchain_chroma
+faiss-cpu
 
 # If using HuggingFace or Groq LLMs
 transformers

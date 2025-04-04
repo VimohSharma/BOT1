@@ -1,9 +1,26 @@
-langchain_core
-langchain_community
-langchain_groq
-langchain_text_splitters
-langchain
-langchain_huggingface
+# Streamlit app
 streamlit
-os
-dotenv
+
+# Environment variables
+python-dotenv
+
+# LangChain ecosystem
+langchain
+langchain-core
+langchain-community
+langchain-groq
+langchain-huggingface
+langchain-text-splitters
+
+# If using HuggingFace or Groq LLMs
+transformers
+accelerate
+
+# If using PDF input
+PyPDF2
+
+# Vectorstore
+faiss-cpu
+
+# Tokenizer
+tiktoken

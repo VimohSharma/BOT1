@@ -19,7 +19,7 @@ accelerate
 
 # If using PDF input
 PyPDF2
-
+pypdf
 # Vectorstore
 faiss-cpu
 

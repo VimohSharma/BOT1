@@ -32,9 +32,9 @@ components.html("""
 from dotenv import load_dotenv
 load_dotenv()
 
-os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT")
+os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
 
 
 #groq_api_key=os.getenv("GROQ_API_KEY")
@@ -44,7 +44,7 @@ api_key=st.text_input("Enter your Groq API Key:",type="password")
 embeddings=HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 vector_store= None
 if api_key:
-    model = ChatGroq(model="Llama3-8b-8192",groq_api_key=groq_api_key)
+    model = ChatGroq(model="Llama3-8b-8192",groq_api_key=api_key)
 
     session_id = st.text_input("Session ID",value="Dfault-Sesh")
     if "store" not in st.session_state:

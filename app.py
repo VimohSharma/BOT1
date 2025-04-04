@@ -13,7 +13,6 @@ from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.runnables.history import RunnableWithMessageHistory
-from langchain_core.messages import BaseChatMessageHistory
 import os
 import streamlit.components.v1 as components
 import os

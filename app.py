@@ -37,7 +37,7 @@ os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT")
 
 
-groq_api_key=os.getenv("GROQ_API_KEY")
+#groq_api_key=os.getenv("GROQ_API_KEY")
 os.environ["HF_TOKEN"]=os.getenv("HF_TOKEN")
 
 api_key=st.text_input("Enter your Groq API Key:",type="password")
